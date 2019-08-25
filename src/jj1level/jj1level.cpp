@@ -649,22 +649,25 @@ void JJ1Level::flash (unsigned char red, unsigned char green, unsigned char blue
  */
 int JJ1Level::playBonus () {
 
-	char *bonusFile;
-	int ret;
+	//char *bonusFile;
+	//int ret;
 
-	if (!localPlayer->getJJ1LevelPlayer()->hasGem()) return E_NONE;
+	//if (!localPlayer->getJJ1LevelPlayer()->hasGem()) return E_NONE;
 
-	delete paletteEffects;
-	paletteEffects = NULL;
+	//delete paletteEffects;
+	//paletteEffects = NULL;
 
-	bonusFile = createFileName("BONUSMAP", 0);
+    // ToDo Fix Bonus Level Crash on Finish or exit
+	// i have skipped the bonus in game code - game not use bonus level in game play, eh who needs that bonus ?
+	//bonusFile = createFileName("BONUSMAP", 0);
 
 	// If the gem has been collected, play the bonus level
-	ret = game->playLevel(bonusFile);
+	//ret = game->playLevel(bonusFile);
 
-	delete[] bonusFile;
+	//delete[] bonusFile;
 
-	return ret;
+	//return ret;
+	return 0;
 
 }
 

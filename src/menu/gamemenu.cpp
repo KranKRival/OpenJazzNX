@@ -282,8 +282,14 @@ int GameMenu::newGameDifficulty (GameModeType mode, int levelNum, int worldNum) 
 	char* firstLevel;
 	int ret;
 
-	if (levelNum == -1) firstLevel = createFileName("BONUSMAP", worldNum);
-	else firstLevel = createFileName("LEVEL", levelNum, worldNum);
+    // ToDo Fix Bonus Level Crash on Finish or exit
+	// i have skipped the bonus in game code - game not use bonus level in game play, eh who needs that bonus ?
+	//if (levelNum == -1) 
+	//{
+		//firstLevel = createFileName("BONUSMAP", worldNum);
+	//}
+	//else 
+	firstLevel = createFileName("LEVEL", levelNum, worldNum);
 
 	ret = newGameDifficulty(mode, firstLevel);
 
@@ -500,9 +506,11 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 
 	if (mode == M_SINGLE) {
 
-		check = createFileName("BONUSMAP", 0);
-		exists[10] = fileExists(check);
-		delete[] check;
+        // ToDo Fix Bonus Level Crash on Finish or exit
+		// i have skipped the bonus in game code - game not use bonus level in game play, eh who needs that bonus ?
+		//check = createFileName("BONUSMAP", 0);
+		//exists[10] = fileExists(check);
+		//delete[] check;
 
 	} else exists[10] = false;
 

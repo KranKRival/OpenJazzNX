@@ -307,7 +307,11 @@ LevelType Game::getLevelType (const char* fileName) {
 	length = strlen(fileName);
 
 	if ((length > 4) && isFileType(fileName + length - 4, ".j2l", 4)) return LT_JJ2;
-	if (isFileType(fileName, "bonusmap", 8)) return LT_JJ1BONUS;
+
+    // ToDo Fix Bonus Level Crash on Finish or exit
+	// i have skipped the bonus in game code - game not use bonus level in game play, eh who needs that bonus ?
+	//if (isFileType(fileName, "bonusmap", 8)) return LT_JJ1BONUS;
+
 	return LT_JJ1;
 
 }
@@ -357,9 +361,9 @@ int Game::play () {
 
 		if (levelFile && isFileType(levelFile, "bonusmap", 8)) {
 
-			if (ret == WON) {
+			//if (ret == WON) {
 
-				char *fileName;
+				//char *fileName;
 
 				// Go to next level
 
@@ -370,9 +374,11 @@ int Game::play () {
 				//setLevel(fileName);
 				//delete[] fileName;
 
-			}
+			//}
 
-		} else {
+		} 
+		//else 
+		//{
 
 			if (ret == WON) {
 
@@ -381,7 +387,9 @@ int Game::play () {
 				// Do not use old level's checkpoint coordinates
 				checkpoint = false;
 
-			} else {
+			} 
+			else 
+			{
 
 				// Lost the level
 
@@ -392,7 +400,7 @@ int Game::play () {
 
 			}
 
-		}
+		//}
 
 	}
 
