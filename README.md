@@ -1,5 +1,9 @@
 # OpenJazzNX - Port of OpenJazz to the nintendo switch With SDL2 Support.
 
+![alt text](https://i.ibb.co/p2GjMM7/2019082521212800-656-BE34-E55-C9033-ADE0-F9-DE563-FAE03-C.jpg)
+![alt text](https://i.ibb.co/jD9cT5S/2019082521210700-656-BE34-E55-C9033-ADE0-F9-DE563-FAE03-C.jpg)
+![alt text](https://i.ibb.co/0MDG78D/2019082521205700-656-BE34-E55-C9033-ADE0-F9-DE563-FAE03-C.jpg)
+
 To play the game you need to put jazz jackrabbit game files in same directory as OpenJazzNX.nro
 you can get the shareware Version Or Buy the full game :) (shareware) is cool
 
@@ -15,6 +19,8 @@ hmm who need that bonus doe ?! xD (game will go to next level without using the 
 
 # Todo: 
 Fix the Bugs (not bugsbunny) its Jack man :8
+
+# Have Fun Jack !!!
 
 
 
