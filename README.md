@@ -7,12 +7,6 @@ you can get the shareware Version Or Buy the full game :) (shareware) is cool
 1.Level Bonus crashing the game while quit it or finish it, i have disabled the Bonus while playing the game it self untill i fix it 
 hmm who need that bonus doe ?! xD (game will go to next level without using the bonus) im not sure if its me or its comes from OpenJazz Engine ?!
 
-2.Sound on loading level is kracky 
-
-3.When on pause sound is kracky aswell
-
-4.minor font/pallete bugs on choose level and ingame menu palletes
-
 # Todo: 
 Fix the Bugs (not bugsbunny) its Jack man :8
 
