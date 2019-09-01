@@ -1,11 +1,11 @@
 {
   "title": "OpenJazzNX",
-  "author": "KranK/Kuranku",
+  "author": "KranKRival",
   "category": "game",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "url": "https://github.com/KranKRival/OpenJazzNX",
   "license": "GPLv2",
-  "description": "OpenJazzNX - Port of OpenJazz to the nintendo switch With SDL2 Support.",
-  "details": "To play the game you need to put jazz jackrabbit game files in same directory as OpenJazzNX.nro you can get the shareware Version Or Buy the full game :) (shareware) is cool\\n\\nBugs:\\n\\n1.Level Bonus crashing the game while quit it or finish it, i have disabled the Bonus untill i fix it\\n\\n2.Sound on loading level is kracky\\n\\n3.When on pause sound is kracky aswell\\n\\n4.minor font/pallete bugs on choose level and ingame menu palletes\\n\\nTodo:\\n\\nFix the Bugs (not bugsbunny) its Jack man :8\\nHave Fun Jack !!!",
-  "changelog": ""
+  "description": "Port of OpenJazz to the nintendo switch With SDL2 Support.",
+  "details": "To play the game you need to put jazz jackrabbit game files in same directory as OpenJazzNX.nro\\n\\nTHIS DOWNLOAD INCLUDES THE SHAREWARE FILES TO PLAY THE GAME !!!\\n\\ncool\\n\\nBugs:\\n\\n1.Level Bonus crashing the game while quit it or finish it, i have disabled the Bonus while playing the game it self until i fix it\\nhmm who need that bonus doe ?! xD (game will go to next level without using the bonus) im not sure if its me or its comes from \\n\\nTodo: \\n\\n1.Fix Diamond Bonus level crash\\n\\n\\nHave Fun Jack !!!",
+  "changelog": "1.Fixed sound bug on loading level\\n2.Fixed  sound bug on game pause\\n3.Fixed level select font and palette\\n4.Fixed in-game menu font and palette\\n5.Fixed Load-game menu font\\n6.Fixed most font color bugs\\n7.Renamed ESC key with Minus on all screens"
 }

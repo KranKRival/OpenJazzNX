@@ -37,6 +37,10 @@ include $(DEVKITPRO)/libnx/switch_rules
 #   of a homebrew executable (.nro). This is intended to be used for sysmodules.
 #   NACP building is skipped as well.
 #---------------------------------------------------------------------------------
+VERSION_MAJOR := 1
+VERSION_MINOR := 2
+VERSION_MICRO := 0
+
 TARGET		:=	OpenJazzNX
 BUILD		:=	build
 SOURCES		:=	src src/game src/io src/io/gfx src/jj1bonuslevel \
@@ -51,6 +55,7 @@ INCLUDES	:=	src
 APP_TITLE	:= OpenJazzNX
 #APP_DESCRIPTION:=
 APP_AUTHOR	:= KranK/KuranKu
+APP_VERSION := ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}
 
 #---------------------------------------------------------------------------------
 # options for code generation
