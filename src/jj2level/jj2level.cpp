@@ -103,8 +103,8 @@ JJ2Level::~JJ2Level () {
 	delete font;
 
 	// Restore panel font palette
-	panelBigFont->setPalette(canvas->format->palette->colors);
-	panelSmallFont->setPalette(canvas->format->palette->colors);
+	panelBigFont->setPalette(palette);
+	panelSmallFont->setPalette(palette);
 
 	return;
 
@@ -497,7 +497,7 @@ int JJ2Level::play () {
 		if (pmessage && !pmenu)
 		{
 			font->showString("pause", (canvasW >> 1) - 44, 32);
-			font->setPalette(canvas->format->palette->colors);
+			font->setPalette(palette);
 		}
 			
 
@@ -526,7 +526,7 @@ int JJ2Level::play () {
 			font->showString("blue gems", (canvasW >> 1) - 152, (canvasH >> 1) - 20);
 			font->showNumber(jj2LevelPlayer->getGems(2), (canvasW >> 1) + 124, (canvasH >> 1) - 20);
 
-			font->setPalette(canvas->format->palette->colors);
+			font->setPalette(palette);
 
 		}
 

@@ -419,6 +419,46 @@ int Font::showString (const char* string, int x, int y) {
 
 }
 
+int Font::showString_2(const char* string, int x, int y) {
+
+	SDL_Surface* surface;
+	SDL_Rect dst;
+	unsigned int count;
+	int xOffset, yOffset;
+
+	// Determine the position at which to draw the first character
+	xOffset = x;
+	yOffset = y;
+
+	// Go through each character of the string
+	for (count = 0; string[count]; count++) {
+
+		if (string[count] == '\n') {
+
+			xOffset = x;
+			yOffset += lineHeight;
+
+		} else {
+
+			// Determine the character's position on the screen
+			dst.y = yOffset;
+			dst.x = xOffset;
+
+			// Determine the character's surface
+			surface = characters[int(map[int(string[count])])];
+       
+			// Draw the character to the screen
+			SDL_BlitSurface(surface, NULL, canvas, &dst);
+
+			xOffset += surface->w + 2;
+
+		}
+
+	}
+
+	return xOffset;
+
+}
 
 /**
  * Draw a JJ1 cutscene string using the font.

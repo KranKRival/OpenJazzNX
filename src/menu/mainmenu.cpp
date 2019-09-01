@@ -30,6 +30,7 @@
 #include "io/controls.h"
 #include "io/gfx/video.h"
 #include "io/sound.h"
+#include "io/gfx/font.h"
 #include "jj1scene/jj1scene.h"
 #include "loop.h"
 #include "util.h"
@@ -445,8 +446,35 @@ int MainMenu::main () {
 		dst.y = ((canvasH - SH) >> 1) + options[option].y;
 		SDL_BlitSurface(highlight, options + option, canvas, &dst);
 
-	}
+		//Show Autor of the Port to the switch
+		
+		SDL_Color Col_red[256]; 
+		SDL_Color Col_green[256]; 
+        int count;
+		for (count = 0; count < 256; count++)
+		{
+			Col_red[count].r = 255;
+			Col_red[count].g = 0;
+			Col_red[count].b = 0;
+			Col_red[count].a = 150;
 
+			Col_green[count].r = 0;
+			Col_green[count].g = 255;
+			Col_green[count].b = 0;
+			Col_green[count].a = 150;
+		}
+		drawRect(canvasW - 146, 0, 228, 13, 79);
+		fontmn2->showString_2("ported by krank", canvasW - 144, 1.5);
+		fontmn2->setPalette(Col_red);
+		
+		// Show OpenjazzNX
+		fontmn2->showString("NX", canvasW - 265, 180);
+		
+		fontmn2->setPalette(Col_green);
+
+
+	}
+    
 	return E_NONE;
 
 }

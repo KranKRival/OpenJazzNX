@@ -5,22 +5,26 @@
  *
  * Part of the OpenJazz project
  *
- * @par History:
- * - 23rd August 2005: Created level.c
- * - 3rd February 2009: Renamed level.c to level.cpp
- * - 19th July 2009: Created levelframe.cpp from parts of level.cpp
- * - 19th July 2009: Added parts of levelload.cpp to level.cpp
- * - 30th March 2010: Created baselevel.cpp from parts of level.cpp and
+ * @section History
+ * 23rd August 2005: Created level.c
+ * 3rd February 2009: Renamed level.c to level.cpp
+ * 19th July 2009: Created levelframe.cpp from parts of level.cpp
+ * 19th July 2009: Added parts of levelload.cpp to level.cpp
+ * 30th March 2010: Created baselevel.cpp from parts of level.cpp and
  *                  levelframe.cpp
- * - 1st August 2012: Renamed baselevel.cpp to level.cpp
+ * 1st August 2012: Renamed baselevel.cpp to level.cpp
  *
- * @par Licence:
- * Copyright (c) 2005-2017 Alister Thomson
+ * @section Licence
+ * Copyright (c) 2005-2013 Alister Thomson
  *
  * OpenJazz is distributed under the terms of
  * the GNU General Public License, version 2.0
  *
- * @par Description:
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ * @section Description
  * Deals with functionality common to ordinary levels and bonus levels.
  *
  */
@@ -240,7 +244,6 @@ void Level::drawOverlay (unsigned char bg, bool menu, int option,
 		panelBigFont->showNumber(video.getHeight(), canvasW - 12, 14);
 		panelBigFont->showString("fps", canvasW - 76, 26);
 		panelBigFont->showNumber((int)smoothfps, canvasW - 12, 26);
-		panelBigFont->setPalette(canvas->format->palette->colors);
 
 #ifdef SCALE
 		if (video.getScaleFactor() > 1) {
@@ -262,11 +265,7 @@ void Level::drawOverlay (unsigned char bg, bool menu, int option,
 
 		for (count = 0; count < nPlayers; count++)
 			if (panelBigFont->getStringWidth(players[count].getName()) > width)
-			{
 				width = panelBigFont->getStringWidth(players[count].getName());
-				fontmn2->setPalette(canvas->format->palette->colors);
-			}
-				
 
 		drawRect((canvasW >> 1) - 48, 11, width + 57, (nPlayers * 12) + 1, bg);
 
@@ -278,10 +277,9 @@ void Level::drawOverlay (unsigned char bg, bool menu, int option,
 				(canvasW >> 1) - 16, 14 + (count * 12));
 			panelBigFont->showNumber(players[count].teamScore,
 				(canvasW >> 1) + width + 1, 14 + (count * 12));
-			panelBigFont->setPalette(canvas->format->palette->colors);
 
 		}
-        
+
 	}
 
 
@@ -295,26 +293,20 @@ void Level::drawOverlay (unsigned char bg, bool menu, int option,
 
 		for (count = 0; count < 6; count++) {
 
-			// Gray out Save and Load options, as they are unimplemented
-
-			if (count == 2 || count == 3) {
-
-				drawRect((canvasW >> 2) - 4, (canvasH >> 1) + (count << 4) - 48, 136, 15, textPalIndex);
-
-			}
-
 			if (count == option)
-			fontmn2->mapPalette(240, 8, selectedTextPalIndex, textPalSpan);
+			{
+				fontmn2->mapPalette(240, 8, selectedTextPalIndex, textPalSpan);
+				fontmn2->setPalette(menuPalette);
+			}
 			else
-			fontmn2->mapPalette(240, 8, textPalIndex, textPalSpan);
-
+			{
+				fontmn2->mapPalette(240, 8, textPalIndex, textPalSpan);
+				fontmn2->setPalette(canvas->format->palette->colors);
+			}
 			fontmn2->showString(menuOptions[count], canvasW >> 2, (canvasH >> 1) + (count << 4) - 46);
-			fontmn2->setPalette(canvas->format->palette->colors);
 
 		}
-
-		
-
+        fontmn2->setPalette(canvas->format->palette->colors);
 	}
 
 	return;
@@ -340,8 +332,6 @@ int Level::select (bool& menu, int option) {
 
 			menu = false;
 
-			break;
-
 		case 1: // Change difficulty
 
 			if (!multiplayer) game->setDifficulty((game->getDifficulty() + 1) & 3);
@@ -350,11 +340,9 @@ int Level::select (bool& menu, int option) {
 
 		case 2: // Save
 
-			// FALLTHROUGH
+			break;
 
 		case 3: // Load
-
-			playSound(S_WAIT);
 
 			break;
 
@@ -371,7 +359,6 @@ int Level::select (bool& menu, int option) {
 
 				// Restore level palette
 				video.setPalette(palette);
-				video.setPalette(canvas->format->palette->colors);
 
 			}
 
@@ -411,7 +398,7 @@ int Level::loop (bool& menu, int& option, bool& message) {
 
 
 	// Main loop
-	if (::loop(NORMAL_LOOP, paletteEffects, paused) == E_QUIT) return E_QUIT;
+	if (::loop(NORMAL_LOOP, paletteEffects) == E_QUIT) return E_QUIT;
 
 
 	if (controls.release(C_ESCAPE)) {
@@ -468,7 +455,7 @@ int Level::loop (bool& menu, int& option, bool& message) {
 		}
 
 	}
-#if !defined(ANDROID)
+#if !(ANDROID)
 	else {
 
 		if (controls.wasCursorReleased()) menu = true;
@@ -555,4 +542,3 @@ LevelStage Level::getStage () {
 	return stage;
 
 }
-

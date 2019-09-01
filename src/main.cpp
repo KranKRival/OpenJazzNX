@@ -400,11 +400,12 @@ void shutDown () {
  * @return Error code
  */
 int play () {
-
+	
 	MainMenu *mainMenu = NULL;
 	JJ1Scene *scene = NULL;
 
 	// Start the opening music
+    
 
 	playMusic("MENUSNG.PSM");
 

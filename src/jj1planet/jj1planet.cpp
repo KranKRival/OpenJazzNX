@@ -131,10 +131,10 @@ int JJ1Planet::play () {
 
 	tickOffset = globalTicks;
 
-	stopMusic();
+	//stopMusic();
 
 	video.setPalette(palette);
-	video.setPalette(canvas->format->palette->colors);
+	//video.setPalette(palette);
 
 
 	while (true) {
@@ -157,7 +157,7 @@ int JJ1Planet::play () {
 
 		fontmn1->showString("now approaching", (canvasW - 288) >> 1, 0);
 		fontmn1->showString(name, (canvasW - fontmn1->getStringWidth(name)) >> 1, canvasH - 24);
-		fontmn1->setPalette(canvas->format->palette->colors);
+		fontmn1->setPalette(palette);
 
 	}
 

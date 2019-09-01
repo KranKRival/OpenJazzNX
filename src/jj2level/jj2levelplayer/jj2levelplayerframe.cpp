@@ -970,7 +970,7 @@ void JJ2LevelPlayer::draw (unsigned int ticks, int change) {
 		panelBigFont->showString(player->name,
 			FTOI(drawX + JJ2PXO_MID) - (panelBigFont->getStringWidth(player->name) >> 1),
 			FTOI(drawY - F32 - F16));
-			panelBigFont->setPalette(canvas->format->palette->colors);
+			panelBigFont->setPalette(palette);
 
 	//panelBigFont->showNumber(mod->properties, FTOI(drawX) + 24, FTOI(drawY) + 12);
 

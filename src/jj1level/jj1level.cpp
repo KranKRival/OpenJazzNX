@@ -833,12 +833,20 @@ int JJ1Level::play () {
 		if (pmessage && !pmenu)
 		{
 			font->showString("pause", (canvasW >> 1) - 44, 32);
-			font->setPalette(canvas->format->palette->colors);
+			font->setPalette(palette);
+			setMusicVolume(0);
+			setSoundVolume(0);
+		}
+		else
+		{
+			setSoundVolume(64);
+			setMusicVolume(128);
 		}
 			
 
 		// If paused, silence music
-		pauseMusic(pmessage && !pmenu);
+		//pauseMusic(pmessage && !pmenu);
+		
 
 		if (stage == LS_END) {
 
@@ -908,7 +916,7 @@ int JJ1Level::play () {
 			font->showString("score", (canvasW >> 1) - 152, (canvasH >> 1) + 40);
 			font->showNumber(localPlayer->getScore(), (canvasW >> 1) + 124, (canvasH >> 1) + 40);
 
-			font->setPalette(canvas->format->palette->colors);
+			font->setPalette(palette);
 
 		}
 

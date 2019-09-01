@@ -198,7 +198,7 @@ int JJ1DemoLevel::play () {
 
 
 		font->showString("demo", (canvasW >> 1) - 36, 32);
-		font->setPalette(canvas->format->palette->colors);
+		font->setPalette(palette);
 
 
 	}

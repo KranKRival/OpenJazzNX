@@ -40,12 +40,20 @@
 
 
 /**
- * Show the "(esc) quits" string.
+ * Show the "(Minus) quits" string.
  */
 void Menu::showEscString () {
 
 	fontbig->showString(ESCAPE_STRING, 3, canvasH - 12);
-	fontbig->setPalette(canvas->format->palette->colors);
+	SDL_Color Col_red[256]; 
+        int count;
+		for (count = 0; count < 256; count++)
+		{
+			Col_red[count].r = 255;
+			Col_red[count].g = 0;
+			Col_red[count].b = 0;
+		}
+		fontbig->setPalette(Col_red);
 	
 
 	return;
@@ -62,7 +70,7 @@ void Menu::showEscString () {
  */
 int Menu::message (const char* text) {
 
-	//fontmn2->setPalette(menuPalette);
+	fontmn2->setPalette(menuPalette);
 
 	while (true) {
 
@@ -77,7 +85,7 @@ int Menu::message (const char* text) {
 
 		// Draw the message
 		fontmn2->showString(text, canvasW >> 2, (canvasH >> 1) - 16);
-		fontmn2->setPalette(canvas->format->palette->colors);
+		fontmn2->setPalette(menuPalette);;
 
 	}
 
@@ -151,13 +159,13 @@ int Menu::generic (const char** optionNames, int options, int& chosen) {
 			if (count == chosen) fontmn2->mapPalette(240, 8, 114, 16);
 
 			fontmn2->showString(optionNames[count], canvasW >> 2, (canvasH >> 1) + (count << 4) - (options << 3));
-			fontmn2->setPalette(canvas->format->palette->colors);
+			fontmn2->setPalette(menuPalette);
 
-			if (count == chosen) fontmn2->setPalette(canvas->format->palette->colors);//fontmn2->setPalette(menuPalette);
+			if (count == chosen) fontmn2->setPalette(menuPalette);
 
 
 		}
-
+        fontmn2->setPalette(menuPalette);;
 		showEscString();
 
 	}
@@ -272,7 +280,7 @@ int Menu::textInput (const char* request, char*& text) {
 		input[cursor] = terminate;
 		fontmn2->showString(input + cursor, x, canvasH >> 1);
 		//fontmn2->setPalette(menuPalette);
-		fontmn2->setPalette(canvas->format->palette->colors);
+		fontmn2->setPalette(menuPalette);;
 
 		showEscString();
 

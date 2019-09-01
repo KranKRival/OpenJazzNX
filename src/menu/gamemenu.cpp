@@ -196,6 +196,8 @@ int GameMenu::playNewGame (GameModeType mode, char* firstLevel) {
  *
  * @return Error code
  */
+
+#define GREEN (SDL_Color){0,255,0}
 int GameMenu::newGameDifficulty (GameModeType mode, char* firstLevel) {
 
 	const char *options[4] = {"easy", "medium", "hard", "turbo"};
@@ -203,7 +205,7 @@ int GameMenu::newGameDifficulty (GameModeType mode, char* firstLevel) {
 	int x, y, count;
 
 	video.setPalette(menuPalette);
-	video.setPalette(canvas->format->palette->colors);
+	//video.setPalette(palette);
 
 	while (true) {
 
@@ -240,16 +242,19 @@ int GameMenu::newGameDifficulty (GameModeType mode, char* firstLevel) {
 
 		for (count = 0; count < 4; count++) {
 
-			if (count == difficulty) fontmn2->mapPalette(240, 8, 114, 16);
-
+			if (count == difficulty) 
+			{
+				
+				fontmn2->setPalette(canvas->format->palette->colors);
+			}
 			fontmn2->showString(options[count], canvasW >> 2, (canvasH >> 1) + (count << 4) - 32);
-			fontmn2->setPalette(canvas->format->palette->colors);
-			
+			fontmn2->mapPalette(240, 8, 114, 16);
 
-			if (count == difficulty) fontmn2->setPalette(canvas->format->palette->colors);
+
+			//if (count == difficulty) fontmn2->setPalette(menuPalette);
 
 		}
-
+		
 		src.x = (difficulty & 1) * 160;
 		src.y = (difficulty & 2) * 50;
 		src.w = 160;
@@ -260,6 +265,8 @@ int GameMenu::newGameDifficulty (GameModeType mode, char* firstLevel) {
 		SDL_BlitSurface(difficultyScreen, &src, canvas, &dst);
 
 		showEscString();
+		
+
 
 	}
 
@@ -314,7 +321,7 @@ int GameMenu::loadGame () {
 	worldNum = levelNum = option = 0;
 
 	video.setPalette(menuPalette);
-	video.setPalette(canvas->format->palette->colors);
+	//video.setPalette(palette);
 
 	while (true) {
 
@@ -347,7 +354,7 @@ int GameMenu::loadGame () {
 			if (newGameDifficulty(M_SINGLE, levelNum, worldNum) == E_QUIT) return E_QUIT;
 
 			video.setPalette(menuPalette);
-			video.setPalette(canvas->format->palette->colors);
+			//video.setPalette(palette);
 
 		}
 
@@ -365,22 +372,21 @@ int GameMenu::loadGame () {
 
 		video.clearScreen(15);
 
-		if (option == 0) fontmn2->mapPalette(240, 8, 114, 16);
+		if (option == 0) fontmn2->setPalette(menuPalette);;
 		fontmn2->showString("choose world:", 32, canvasH / 3);
 		fontmn2->showNumber(worldNum, 208, canvasH / 3);
 
-		if (option == 0) fontmn2->setPalette(canvas->format->palette->colors);
-		else fontmn2->mapPalette(240, 8, 114, 16);
+		if (option == 0) fontmn2->mapPalette(240, 8, 114, 16);
+		else fontmn2->setPalette(menuPalette);
 
 		fontmn2->showString("choose level:", 32, (canvasH << 1) / 3);
 		if (levelNum >= 0) fontmn2->showNumber(levelNum, 208, (canvasH << 1) / 3);
 		else fontmn2->showString("bonus", 172, (canvasH << 1) / 3);
 
-		if (option != 0) fontmn2->setPalette(canvas->format->palette->colors);
-
-		fontmn2->setPalette(canvas->format->palette->colors);
+		if (option != 0) fontmn2->mapPalette(240, 8, 114, 16);
+        //fontmn2->setPalette(menuPalette);
 		showEscString();
-
+        
 	}
 
 	return E_NONE;
@@ -456,7 +462,7 @@ int GameMenu::selectEpisode (GameModeType mode, int episode) {
 	}
 
 	video.setPalette(palette);
-	video.setPalette(canvas->format->palette->colors);
+	//video.setPalette(palette);
 
 	return E_NONE;
 
@@ -481,7 +487,7 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 	int episode, count, x, y;
 
 	video.setPalette(palette);
-	video.setPalette(canvas->format->palette->colors);
+	//video.setPalette(palette);
 
 	for (count = 0; count < 10; count++) {
 
@@ -599,7 +605,15 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 		}
         
 		fontbig->showString(ESCAPE_STRING, canvasW - 100, canvasH - 12);
-		fontmn2->setPalette(canvas->format->palette->colors);
+		SDL_Color Col_red[256]; 
+        int count;
+		for (count = 0; count < 256; count++)
+		{
+			Col_red[count].r = 255;
+			Col_red[count].g = 0;
+			Col_red[count].b = 0;
+		}
+		fontbig->setPalette(Col_red);
 
 	}
 

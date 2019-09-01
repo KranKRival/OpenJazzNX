@@ -527,7 +527,7 @@ int JJ1Level::load (char* fileName, bool checkpoint) {
 	x = fontmn2->showString("LOADING ", x - 60, (canvasH >> 1) - 16);
 	x = fontmn2->showString(string, x, (canvasH >> 1) - 16);
 	fontmn2->showString(ext, x, (canvasH >> 1) - 16);
-	fontmn2->setPalette(canvas->format->palette->colors);
+	fontmn2->setPalette(palette);
 
 	delete[] string;
 

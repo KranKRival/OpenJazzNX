@@ -68,6 +68,65 @@ CXXFLAGS	:= $(CFLAGS) -frtti -fexceptions
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
+SRCS =	main.c		\
+	conf_gfx.c	\
+	conf_snd.c	\
+	conf_mus.c	\
+	conf_hlp.c	\
+	init.c		\
+	config.c	\
+	events.c	\
+	tools.c		\
+	screens.c	\
+	game.c		\
+	editor.c	\
+	files.c		\
+	tape.c		\
+	anim.c		\
+	network.c	\
+	netserv.c
+
+OBJS =	main.o		\
+	conf_gfx.o	\
+	conf_snd.o	\
+	conf_mus.o	\
+	conf_hlp.o	\
+	init.o		\
+	config.o	\
+	events.o	\
+	tools.o		\
+	screens.o	\
+	game.o		\
+	editor.o	\
+	files.o		\
+	tape.o		\
+	anim.o		\
+	network.o	\
+	netserv.o
+
+CNFS =	conf_gfx.h	\
+	conf_snd.h	\
+	conf_mus.h	\
+	conf_chr.c	\
+	conf_chr.h	\
+	conf_cus.c	\
+	conf_cus.h	\
+	conf_grp.c	\
+	conf_grp.h	\
+	conf_e2g.c	\
+	conf_esg.c	\
+	conf_e2s.c	\
+	conf_fnt.c	\
+	conf_g2s.c	\
+	conf_g2m.c	\
+	conf_var.c	\
+	conf_act.c
+
+CNFS_CMD = ../build-scripts/create_element_defs.pl
+
+TIMESTAMP_FILE = conftime.h
+TIMESTAMP_FORMAT = %Y-%m-%d %H:%M
+
 LIBS	:= -lstdc++fs -lfreetype -lSDL2_ttf -lSDL2_gfx -lSDL2_image -lSDL2 -lEGL -lGLESv2 -lglapi -ldrm_nouveau -lpng -ljpeg `sdl2-config --libs` `freetype-config --libs` -lwebp -lnx -logg -lmpg123 -lmodplug -lopusfile `aarch64-none-elf-pkg-config --libs SDL2_mixer`
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing

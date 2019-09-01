@@ -2,6 +2,8 @@
     "files.associations": {
         "hash_map": "cpp",
         "chrono": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "string": "cpp",
+        "random": "cpp"
     }
 }

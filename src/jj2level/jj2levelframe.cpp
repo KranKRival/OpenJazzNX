@@ -183,7 +183,7 @@ void JJ2Level::draw () {
 
 		panelSmallFont->showString(":", canvasW - 24, canvasH - 16);
 		panelSmallFont->showString(";", canvasW - 16, canvasH - 16);
-		panelSmallFont->setPalette(canvas->format->palette->colors);
+		panelSmallFont->setPalette(palette);
 
 	} else panelSmallFont->showNumber(localPlayer->getAmmo(), canvasW - 8, canvasH - 16);
 
