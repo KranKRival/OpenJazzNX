@@ -39,7 +39,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #---------------------------------------------------------------------------------
 VERSION_MAJOR := 1
 VERSION_MINOR := 2
-VERSION_MICRO := 0
+VERSION_MICRO := 1
 
 TARGET		:=	OpenJazzNX
 BUILD		:=	build
